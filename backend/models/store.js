@@ -1,45 +1,55 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('./index');
-  
-    const store = sequelize.define('store', {
-      
-        bookID: {
-         type: Sequelize.INTEGER
-      },
-      title: {
-         type: Sequelize.STRING
-      },
-      authors: {
-         type: Sequelize.STRING
-      },
-      average_rating: {
-        type: Sequelize.STRING
-      },
-      is_bn: {
-        type: Sequelize.INTEGER
-      },
-      is_bn13: {
-        type: Sequelize.INTEGER
-      },
-      language_code: {
-        type: Sequelize.STRING
-      },
-      num_pages: {
-        type: Sequelize.INTEGER
-      },
-      ratings_count: {
-        type: Sequelize.INTEGER
-      },
-      text_reviews_count: {
-        type: Sequelize.INTEGER
-      },
-      publisher: {
-        type: Sequelize.INTEGER
-      },
-    });  
-      
-    module.exports = store;   
+const mongoose = require('mongoose');
 
+const StoreSchema = new mongoose.Schema({
+  bookID:{
+    type: String
+  },
+  title:{
+    type: String
+  },
+  authors:{
+    type:String
+  },
+  average_rating:{
+    type: String
+  },
+  isbn:{
+    type: String
+  },
+  isbn13:{
+    type: String
+  },
+  language_code:{
+    type: String
+  },
+  num_pages:{
+    type: String
+  },
+  ratings_count:{
+    type: String
+  },
+  text_reviews_count:{
+    type: String
+  },
+  publication_date:{
+    type: String
+  },
+  publisher:{
+    type: String
+  },
+  rented:{
+    type: Boolean,
+    default: false
+  },
+  available:{
+    type: Boolean,
+    default: true
+  },
+  quantity:{
+    type: Number,
+    default: 10
+  }
+});
 
-
-
+const Store = mongoose.model('Store',StoreSchema);
+module.exports = Store;

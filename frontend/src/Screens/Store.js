@@ -12,10 +12,10 @@ function Store() {
       setLoading(true);
       try {
         const response = await axios.get(
-          'https://frappe.io/api/method/frappe-library'
+          'http://localhost:5000/api/books'
         );
         // Convert the nested object into an array of objects
-        const dataArray = Object.values(response.data.message);
+        const dataArray = Object.values(response.data.data);
         setPosts(dataArray);
         setLoading(false);
       } catch (err) {
